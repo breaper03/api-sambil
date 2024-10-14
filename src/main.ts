@@ -10,7 +10,6 @@ async function bootstrap() {
   dotenv.config();
   await backendDBManager.connect();
 
-
   const app = await NestFactory.create(AppModule);
   const globalPrefix = '/';
   app.setGlobalPrefix(globalPrefix);
@@ -26,7 +25,7 @@ async function bootstrap() {
     origin: '*',
     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
     allowedHeaders: 'Content-Type, Accept, Authorization',
-    credentials: true,
+    credentials: true
   };
 
   app.enableCors(corsOptions);

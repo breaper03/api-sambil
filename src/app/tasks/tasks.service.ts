@@ -8,16 +8,26 @@ export class TasksService {
 
   async findAll(searchQuery?: string) {
     try {
-      const res = (await this.model.find()).map(task => {
+      const res = (await this.model.find()).map((task) => {
         delete task.__v;
         return task;
       });
       if (!searchQuery) {
-        return res
+        return res;
       } else {
-        console.log(searchQuery)
-        const filter = res.filter((task: ITask) => task.title.toLowerCase().trim().includes(searchQuery.toLowerCase().trim()) || task.description.toLowerCase().trim().includes(searchQuery.toLowerCase().trim()))
-        return filter
+        console.log(searchQuery);
+        const filter = res.filter(
+          (task: ITask) =>
+            task.title
+              .toLowerCase()
+              .trim()
+              .includes(searchQuery.toLowerCase().trim()) ||
+            task.description
+              .toLowerCase()
+              .trim()
+              .includes(searchQuery.toLowerCase().trim())
+        );
+        return filter;
       }
     } catch (error: any) {
       throw new HttpException(error, HttpStatus.BAD_REQUEST);
@@ -36,9 +46,9 @@ export class TasksService {
 
   async findByUser(userId: string): Promise<ITask[] | string> {
     try {
-      return (await this.model.find({ owner: userId })).map(task => {
+      return (await this.model.find({ owner: userId })).map((task) => {
         delete task.__v;
-        return task
+        return task;
       });
     } catch (error) {
       throw new HttpException(error, HttpStatus.BAD_REQUEST);
@@ -54,7 +64,7 @@ export class TasksService {
         ...task,
         owner: userId,
         createdAt: new Date(),
-        updatedAt: new Date(),
+        updatedAt: new Date()
       };
 
       const valid = TaskSchema.safeParse(newTask);
@@ -67,7 +77,7 @@ export class TasksService {
         );
       } else {
         await this.model.insert(newTask);
-        return newTask
+        return newTask;
       }
     } catch (result: any) {
       const error = result.issues;

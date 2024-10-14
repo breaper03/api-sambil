@@ -5,11 +5,7 @@ import { UsersModule } from 'src/app/users/users.module';
 import { HealthModule } from './health/health.module';
 
 @Module({
-  imports: [
-    HealthModule,
-    TasksModule,
-    UsersModule
-  ],
+  imports: [HealthModule, TasksModule, UsersModule],
   controllers: [],
   providers: [JwtStrategy]
 })

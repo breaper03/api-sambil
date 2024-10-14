@@ -8,7 +8,7 @@ export class UsersService {
   model = createUserModel(backendDBManager);
   async findAll() {
     try {
-      return (await this.model.find()).map(user => {
+      return (await this.model.find()).map((user) => {
         delete user.__v;
         return user;
       });
@@ -36,7 +36,7 @@ export class UsersService {
         ...user,
         createdAt: new Date(),
         updatedAt: new Date(),
-        password: pwd,
+        password: pwd
       };
 
       const valid = UserSchema.safeParse(newUser);
@@ -49,7 +49,7 @@ export class UsersService {
         );
       } else {
         await this.model.insert(newUser);
-        return newUser
+        return newUser;
       }
     } catch (result: any) {
       const error = result.issues;

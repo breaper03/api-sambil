@@ -5,14 +5,14 @@ import { ApiTags } from '@nestjs/swagger';
 @ApiTags('Health')
 @Controller()
 export class HealthController {
-  constructor(private readonly healthService: HealthService) { }
+  constructor(private readonly healthService: HealthService) {}
 
-  @Get("health")
+  @Get('health')
   health() {
     return this.healthService.health();
   }
 
-  @Get("ping")
+  @Get('ping')
   ping() {
     return this.healthService.ping();
   }

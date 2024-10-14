@@ -12,6 +12,6 @@ function getMongoDBManager(dbName: string): TsValidMongoDb {
   return db;
 }
 
-const backendDBManager = getMongoDBManager("sambil-db");
+const backendDBManager = getMongoDBManager('sambil-db');
 
 export { backendDBManager };

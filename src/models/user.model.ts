@@ -13,7 +13,7 @@ type IUser = z.infer<typeof UserSchema>;
 const createUserModel = (db: tsValidMongoDb) =>
   db.createModel(
     new Schema('users', UserSchema, {
-      versionKey: true,
+      versionKey: true
     })
   );
 
