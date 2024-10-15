@@ -15,7 +15,6 @@ export class TasksService {
       if (!searchQuery) {
         return res;
       } else {
-        console.log(searchQuery);
         const filter = res.filter(
           (task: ITask) =>
             task.title
